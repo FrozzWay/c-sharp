@@ -6,60 +6,31 @@ namespace Lab_2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Input first number in complex form z = a + bi:");
+            ComplexNumber num1 = newComplexNumber();
+            Console.WriteLine("\nInput second number in complex form z = a + bi:");
+            ComplexNumber num2 = newComplexNumber();
+            Console.WriteLine("\nPrint: \n 1 to sum\n 2 to difference\n 3 to multiply");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.WriteLine((num1 + num2).value());
+                    break;
+                case "2":
+                    Console.WriteLine((num1 - num2).value());
+                    break;
+                case "3":
+                    Console.WriteLine((num1 * num2).value());
+                    break;
+            }
         }
 
-        class ComplexNumber
+        static ComplexNumber newComplexNumber()
         {
-            private double _a, _b;
-            public ComplexNumber(double a, double b) // Конструктор класса
-            {
-                _a = a;
-                _b = b;
-            }
-
-            public string value() // Вывод комплексного числа на консоль
-            {
-                if (_b != 0) return $"{_a}+{_b}i"; else return $"{_a}";
-            }
-
-            // Операция сложения двух комплексных чисел
-            public static ComplexNumber operator + (ComplexNumber x, ComplexNumber y)
-            {
-                return new ComplexNumber(x._a + y._a, x._b + y._b);
-            }
-
-            // Операция сложения комплексного числа и вещественного
-            public static ComplexNumber operator + (ComplexNumber x, double y)
-            {
-                return new ComplexNumber(x._a + y, x._b);
-            }
-
-            // Операция вычитания двух комплексных чисел
-            public static ComplexNumber operator - (ComplexNumber x, ComplexNumber y)
-            {
-                return new ComplexNumber(x._a - y._a, x._b - y._b);
-            }
-
-            // Операция вычитания комплексного числа и вещественного
-            public static ComplexNumber operator - (ComplexNumber x, double y)
-            {
-                return new ComplexNumber(x._a - y, x._b);
-            }
-
-            // Операция умножения двух комплексных чисел
-            public static ComplexNumber operator * (ComplexNumber x, ComplexNumber y)
-            {
-                double a = x._a * y._a - x._b * y._b;
-                double b = x._a * y._b + x._b * y._a;
-                return new ComplexNumber(a, b);
-            }
-
-            // Операция умножения комплексного числа и вещественного
-            public static ComplexNumber operator * (ComplexNumber x, double y)
-            {
-                return new ComplexNumber(x._a * y, x._b * y);
-            }
+            Console.Write("a ( ReZ ) = "); double a = Convert.ToDouble(Console.ReadLine());
+            Console.Write("b ( ImZ ) = "); double b = Convert.ToDouble(Console.ReadLine());
+            return new ComplexNumber(a, b);
         }
+        
     }
 }
