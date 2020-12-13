@@ -138,7 +138,10 @@ namespace Lab_4
                     }
                 };
 
-                scanner.Scan(new Uri("https://www.susu.ru/"), 10, 5, 0);
+                Console.WriteLine("Url:"); string Url = Console.ReadLine();
+                Console.WriteLine("Count of pages to analize:"); int count = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Limit of pages to show"); int limit = Convert.ToInt32(Console.ReadLine());
+                scanner.Scan(new Uri(Url), count, limit, 0);
                 using (var stream = new StreamWriter(fileName))
                 using (var csvReader = new CsvWriter(stream, System.Globalization.CultureInfo.InvariantCulture))
                 {
